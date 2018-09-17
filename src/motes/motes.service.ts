@@ -40,4 +40,7 @@ export class MotesService {
   async getall(): Promise<Mote[]> {
     return await this.moteModel.find().exec();
   }
+  async editMote(_id: string, mote: CreateMoteDto) {
+    return await this.moteModel.updateOne({ _id: _id }, mote);
+  }
 }

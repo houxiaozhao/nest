@@ -6,6 +6,7 @@ import {
   Delete,
   Query,
   Param,
+  Put,
 } from '@nestjs/common';
 import { MotesService } from './motes.service';
 import { CreateMoteDto } from './dto/create-mote.dto';
@@ -32,5 +33,9 @@ export class MotesController {
   // restful风格接口 http://127.0.0.1:3000/motes/5b9f142df38a9a4924f281d8
   async deleteMote2(@Param() param) {
     return this.motesService.delete(param.moteid);
+  }
+  @Put(':moteid')
+  async editMote(@Param() param, @Body() createMoteDto: CreateMoteDto) {
+    return this.motesService.editMote(param.moteid, createMoteDto);
   }
 }
