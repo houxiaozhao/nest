@@ -22,6 +22,10 @@ export class MotesController {
   async getall(): Promise<Mote[]> {
     return this.motesService.getall();
   }
+  @Get(':moteid')
+  async getone(@Param() param): Promise<Mote> {
+    return this.motesService.getone(param.moteid);
+  }
   @Delete('/deleteMote')
   //自定义路径 http://127.0.0.1:3000/motes/deleteMote?moteid=5b9f142df38a9a4924f281d8
   async deleteMote(@Query() query) {
